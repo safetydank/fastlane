@@ -6,7 +6,7 @@ module Fastlane
     # Raises an exception and stop the lane execution if the repo is not in a clean state
     class HgEnsureCleanStatusAction < Action
       def self.run(params)
-        repo_clean = `hg status`.empty?
+        repo_clean = `hg status -mard`.empty?
 
         if repo_clean
           Helper.log.info 'Mercurial status is clean, all good! 😎'.green
